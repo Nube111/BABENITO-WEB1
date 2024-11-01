@@ -17,6 +17,4 @@ export const getUsers = async(req:Request, res: Response) =>{
 // 1./users/?id="awdawd"&value="fdfd"
 //id, value
 //req.url.params
-//Diego SG
-//18:03
 //const {id, value}=req.url.params
