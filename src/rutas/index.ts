@@ -5,7 +5,7 @@ const router = Router();
   //res.send('hello world');
 //});
 
-import {actualizarHojaTrabajo, createHojaTrabajo, deleteHojaTrabajo, getModelo, getUsers} from '../controladores/index.controladores'
+import {actualizarHojaTrabajo, createHojaTrabajo, createModelo, deleteHojaTrabajo, getHojaTrabajoPorEstado, getModelo, getUsers} from '../controladores/index.controladores'
 
 //router.get('/users', getUsers);
 router.get('/users/:id', getUsers);
@@ -13,6 +13,10 @@ router.get('/modelo/:id', getModelo);
 router.post('/createHojaTrabajo', createHojaTrabajo);
 router.post('/deleteHojaTrabajo', deleteHojaTrabajo);
 router.post('/updateHojaTrabajo', actualizarHojaTrabajo);
+router.post('/hoja-trabajo/estado', getHojaTrabajoPorEstado);
+router.post('/createModelo', createModelo);
+//router.post('/updateModelo',)
+//router.post('/deleteModelo',)
 //router.get('users/:id', getUsers); //usurio específico
 //router.post('users', getUsers);
 //router.put('users/:id', getUsers);

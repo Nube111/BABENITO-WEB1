@@ -24,6 +24,24 @@ export const getModelo = async(req: Request, res: Response) => {
     res.json(result.rows)
 }
 
+
+//hoja trabajo por estado
+export const getHojaTrabajoPorEstado = async (req: Request, res: Response): Promise<void> => {
+    const { estado } = req.body;
+
+    try {
+        const result = await pool.query(
+            `SELECT * FROM mostrar_hoja_trabajo_por_estado($1);`,
+            [estado]
+        );
+
+        res.json(result.rows);  // Devolver las filas resultantes como respuesta JSON
+    } catch (error) {
+        console.error('Error al mostrar las hojas de trabajo por estado:', error);
+        res.status(500).json({ error: 'Error al mostrar las hojas de trabajo por estado' });
+    }
+};
+
 //crear hoja de tabajo
 export const createHojaTrabajo = async (req: Request, res: Response): Promise<void> => {
     const {
@@ -92,3 +110,40 @@ export const actualizarHojaTrabajo = async (req: Request, res: Response): Promis
     }
 };
 
+// crear modelo
+
+
+export const createModelo = async (req: Request, res: Response): Promise<void> => {
+    const {
+        planta, cod_venta, cod_cortado, c_cuero, desc_serie,
+        color_forro, material,
+        descripcion_aplique, color_aplique, codigo_apliques,
+        nom_adorno, num_adorno,
+        codigo_picador, descripcion_picador, color_picador,
+        color_hilo, numero_hilo
+    } = req.body;
+
+    try {
+        await pool.query(
+            `CALL crear_modelo($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17);`,
+            [
+                planta, cod_venta, cod_cortado, c_cuero, desc_serie,
+                color_forro, material,
+                descripcion_aplique, color_aplique, codigo_apliques,
+                nom_adorno, num_adorno,
+                codigo_picador, descripcion_picador, color_picador,
+                color_hilo, numero_hilo
+            ]
+        );
+
+        res.json({ message: "Modelo creado exitosamente." });
+    } catch (error) {
+        console.error('Error al crear el modelo:', error);
+        res.status(500).json({ error: 'Error al crear el modelo' });
+    }
+};
+
+
+// actualizar modelo
+
+// eliminar modelo 
