@@ -8,7 +8,10 @@ const router = (0, express_1.Router)();
 const index_controladores_1 = require("../controladores/index.controladores");
 //router.get('/users', getUsers);
 router.get('/users/:id', index_controladores_1.getUsers);
+router.get('/modelo/:id', index_controladores_1.getModelo);
 router.post('/createHojaTrabajo', index_controladores_1.createHojaTrabajo);
+router.post('/deleteHojaTrabajo', index_controladores_1.deleteHojaTrabajo);
+router.post('/updateHojaTrabajo', index_controladores_1.actualizarHojaTrabajo);
 //router.get('users/:id', getUsers); //usurio específico
 //router.post('users', getUsers);
 //router.put('users/:id', getUsers);
